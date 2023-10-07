@@ -15,7 +15,7 @@ export class ChatGptRestService {
 
   constructor() {
     this.openai = new OpenAI({
-      apiKey: "AAAAAAA",
+      apiKey: "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", dangerouslyAllowBrowser: true
     });
     this.chat.model = "gpt-3.5-turbo";
     this.chat.messages.push({
