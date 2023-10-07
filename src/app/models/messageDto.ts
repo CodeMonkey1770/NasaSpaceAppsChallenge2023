@@ -1,4 +1,6 @@
-export class messageDto {
-  public role : string;
-  public message : string;
+import { ChatCompletionMessageParam } from "openai/resources/chat";
+
+export class messageDto implements ChatCompletionMessageParam {
+  public role!: 'system' | 'user' | 'assistant' | 'function';
+  public content!: string;
 }
