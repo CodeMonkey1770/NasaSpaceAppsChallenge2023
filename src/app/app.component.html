@@ -1,11 +1,15 @@
-<div class="bg-[url('/assets/background-nasa.png')]"></div>
-<div class="bg-[url('/assets/background-nasa.png')] flex flex-col items-center">
-  <div class="max-w-md rounded overflow-hidden shadow-lg bg-sky-700 opacity-80 mr-16 text-left text-white p-4 m-2 w-[400px]">
-    Hello there
+<div class="flex flex-col items-center" >
+  <div *ngFor="let item of chat.messages">
+    <div class="rounded overflow-hidden shadow-lg bg-sky-700 opacity-80 mr-32 text-left text-sm text-white p-4 m-2 w-[800px]" *ngIf="item.role == 'user'">
+      {{item.content}}<ng-icon name="simpleNasa"></ng-icon>
+    </div>
+    <div class="rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 ml-32 text-sm text-right p-4 m-2 w-[800px]" *ngIf="item.role == 'assistant'">
+      {{item.content}}
+    </div>
   </div>
-  <div class="max-w-md rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 ml-16 text-right p-4 m-2 w-[400px]">
-    Hello there
+  <div class="mx-auto">
+    <input type="text" class="w-[464px] h-10 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"><ng-icon name="matSend"></ng-icon></button>
   </div>
-  <input type="text" class="w-[464px] mx-auto h-10 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
 </div>
-<button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Senden</button>
+

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ChatGptRestService } from './chat-gpt-rest.service';
+import { chatDto } from './models/chatDto';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,13 @@ import { ChatGptRestService } from './chat-gpt-rest.service';
 })
 export class AppComponent {
   title = 'NasaSpaceAppsChallenge2023';
+  chat: chatDto = new chatDto;
 
   constructor(private service: ChatGptRestService){
 
     let request = service.getDataFromOpenAI('tell me sonething about Space!').subscribe(next => {
       console.log(next);
+      this.chat = next; 
     });
 /*
     let request = this.input.createRequest();
