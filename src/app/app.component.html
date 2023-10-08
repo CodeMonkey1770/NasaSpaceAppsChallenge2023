@@ -3,13 +3,13 @@
 </div>
 <div class="flex flex-col items-center">
   <div class="rounded overflow-hidden shadow-lg mr-32 bg-slate-300 opacity-80 text-sm p-4 m-2 w-[800px]">
-      Hello dear fellow <ng-icon name="simpleNasa"></ng-icon> enthusiast! <br>
+      Dear fellow NASA enthusiast! <br>
       My name is Luna and I'm here to help you navigate our vast datasets and to make an
       impact for your neighborhood and community with it. <br>
       How can I assist you?
   </div>
   <div *ngFor="let item of chat.messages">
-    <div class="rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 mr-32 text-left text-sm p-4 m-2 w-[800px]" *ngIf="item.role == 'assistant'">
+    <div [innerHTML]="item.content" style="white-space: pre-line" class="rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 mr-32 text-left text-sm p-4 m-2 w-[800px]" *ngIf="item.role == 'assistant'">
       {{item.content}}
     </div>
     <div class="rounded overflow-hidden shadow-lg bg-sky-700 opacity-80 ml-32 text-white text-sm text-right p-4 m-2 w-[800px]" *ngIf="item.role == 'user'">

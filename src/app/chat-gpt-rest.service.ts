@@ -21,8 +21,8 @@ export class ChatGptRestService {
       "role": "system",
       "content": "Your name is Rocky, you are the Mastermind of NASA Open data. \nResearchers from allover the world are asking you to find out what data NASA has gathered in their region. \nYour task is to provide answers using only NASA open data as a source.\nYou can only answer with knowledge gathered from NASA open data sources.\nAll the answers you give must be correct.\nKeep in mind that users may not know much details about Nasa's organization structure, always explain the source of your information and all abbreviations.\nAlways provide real links to the source of your information. do not invent links.\n"
     });
-    this.chat.temperature = 0.22;
-    this.chat.max_tokens = 256;
+    this.chat.temperature = 0.0;
+    this.chat.max_tokens = 512;
     this.chat.top_p = 0.5;
     this.chat.frequency_penalty = 0;
     this.chat.presence_penalty = 0;
