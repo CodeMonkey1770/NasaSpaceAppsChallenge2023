@@ -1,15 +1,31 @@
-<div class="flex flex-col items-center" >
+<div class="mt-8">
+  <img src="assets/NASA_logo.svg" alt="Logo" class="absolute top-0 left-0 m-4">
+</div>
+<div class="flex flex-col items-center">
+  <div class="rounded overflow-hidden shadow-lg mr-32 bg-slate-300 opacity-80 text-sm p-4 m-2 w-[800px]">
+      Hello dear fellow <ng-icon name="simpleNasa"></ng-icon> enthusiast! <br>
+      My name is Luna and I'm here to help you navigate our vast datasets and to make an
+      impact for your neighborhood and community with it. <br>
+      How can I assist you?
+  </div>
   <div *ngFor="let item of chat.messages">
-    <div class="rounded overflow-hidden shadow-lg bg-sky-700 opacity-80 mr-32 text-left text-sm text-white p-4 m-2 w-[800px]" *ngIf="item.role == 'assistant'">
-      {{item.content}}<ng-icon name="simpleNasa"></ng-icon>
+    <div class="rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 mr-32 text-left text-sm p-4 m-2 w-[800px]" *ngIf="item.role == 'assistant'">
+      {{item.content}}
     </div>
-    <div class="rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 ml-32 text-sm text-right p-4 m-2 w-[800px]" *ngIf="item.role == 'user'">
+    <div class="rounded overflow-hidden shadow-lg bg-sky-700 opacity-80 ml-32 text-white text-sm text-right p-4 m-2 w-[800px]" *ngIf="item.role == 'user'">
       {{item.content}}
     </div>
   </div>
-  <div class="mx-auto">
-    <input type="text" (keyup.enter)="initiateRequest()" [(ngModel)]="input" class="w-[464px] h-10 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-    <button type="submit" (click)="initiateRequest()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"><ng-icon name="matSend"></ng-icon></button>
+  <div class="rounded overflow-hidden shadow-lg bg-slate-300 opacity-80 mr-32 text-left text-sm p-4 m-2 w-[800px]" *ngIf="isLoading">
+    <div class="inline-flex space-x-2">
+      <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+      <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+      <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+    </div>
+  </div>
+  <div class="mx-auto space-x-2">
+    <input type="text" (keyup.enter)="initiateRequest()" (input)="onInputChange()" [(ngModel)]="input" class="w-[464px] h-10 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+    <button type="submit" [disabled]="isInputEmpty" [class.disabled-button]="isInputEmpty" (click)="initiateRequest()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"><ng-icon name="matSend"></ng-icon></button>
   </div>
 </div>
 

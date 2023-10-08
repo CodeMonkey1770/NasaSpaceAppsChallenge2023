@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ChatGptRestService } from './chat-gpt-rest.service';
 import { chatDto } from './models/chatDto';
 
@@ -8,21 +8,31 @@ import { chatDto } from './models/chatDto';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'NasaSpaceAppsChallenge2023';
   chat: chatDto = new chatDto;
   input: string = '';
+  isInputEmpty: Boolean = true; 
+  isLoading: Boolean = false;
 
   constructor(private service: ChatGptRestService){
-    this.chat.messages.push({role: "assistant", content: "Hello fellow hacker!"});
+  }
+
+  onInputChange() {
+    this.isInputEmpty = this.input.trim() === '';
   }
 
   public initiateRequest(){
-    
-    let request = this.service.getDataFromOpenAI(this.input).subscribe(next => {
+
+    if(this.input === ''){return}; 
+    let input = this.input;
+    this.input = ''; 
+    this.isLoading = true;
+
+    let request = this.service.getDataFromOpenAI(input).subscribe(next => {
       this.input='';
       this.chat = next; 
+      this.isLoading = false;
     });
-
   }
-
 }

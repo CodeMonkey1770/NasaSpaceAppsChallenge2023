@@ -3,7 +3,6 @@ import OpenAI from 'openai';
 import { chatDto } from './models/chatDto';
 import { Observable } from 'rxjs';
 import { messageDto } from './models/messageDto';
-import { ChatCompletion, ChatCompletionCreateParamsNonStreaming } from 'openai/resources/chat';
 
 @Injectable({
   providedIn: 'root'

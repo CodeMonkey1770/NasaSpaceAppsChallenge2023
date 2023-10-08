@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgIconsModule } from '@ng-icons/core';
+import { NgIconsModule} from '@ng-icons/core';
 import { matSend } from '@ng-icons/material-icons/baseline';
 import { simpleNasa } from '@ng-icons/simple-icons';
 import { FormsModule } from '@angular/forms';
